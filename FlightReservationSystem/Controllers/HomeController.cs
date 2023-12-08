@@ -1,21 +1,22 @@
 ﻿using FlightReservationSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace FlightReservationSystem.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly TestDbContext _context;
+        public HomeController(TestDbContext context)
         {
-            _logger = logger;
+            this._context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var Humans = _context.Humans.ToList();
+            return View(Humans);
         }
 
         public IActionResult Privacy()
