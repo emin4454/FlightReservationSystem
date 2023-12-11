@@ -31,6 +31,14 @@ namespace FlightReservationSystem.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("age")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ders")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
