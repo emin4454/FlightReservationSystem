@@ -2,7 +2,7 @@
 
 namespace FlightReservationSystem.Models
 {
-    public class Human
+    public class User
     {
         [Required]
         public int Id { get; set; }

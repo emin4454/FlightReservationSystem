@@ -15,8 +15,7 @@ namespace FlightReservationSystem.Controllers
 
         public IActionResult Index()
         {
-            var Humans = _context.Humans.ToList();
-            return View(Humans);
+            return View();
         }
 
         public IActionResult Privacy()

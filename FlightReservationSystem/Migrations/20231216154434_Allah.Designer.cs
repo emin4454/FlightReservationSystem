@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlightReservationSystem.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20231210171140_TestMigration")]
-    partial class TestMigration
+    [Migration("20231216154434_Allah")]
+    partial class Allah
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,6 +32,14 @@ namespace FlightReservationSystem.Migrations
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
+
+                    b.Property<int>("age")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ders")
                         .IsRequired()
                         .HasColumnType("text");
 

@@ -4,7 +4,7 @@
 
 namespace FlightReservationSystem.Migrations
 {
-    public partial class TestMigration : Migration
+    public partial class Allah : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

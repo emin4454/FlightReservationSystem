@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlightReservationSystem.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20231211110715_TTest")]
-    partial class TTest
+    [Migration("20231216154653_TestMigration1")]
+    partial class TestMigration1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,7 @@ namespace FlightReservationSystem.Migrations
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
-            modelBuilder.Entity("FlightReservationSystem.Models.Human", b =>
+            modelBuilder.Entity("FlightReservationSystem.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -36,9 +36,16 @@ namespace FlightReservationSystem.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<int>("age")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("ders")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Humans");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

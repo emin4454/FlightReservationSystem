@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace FlightReservationSystem.Migrations
 {
     [DbContext(typeof(TestDbContext))]
-    [Migration("20231211111323_TTTest")]
-    partial class TTTest
+    [Migration("20231216151909_TestMigration")]
+    partial class TestMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

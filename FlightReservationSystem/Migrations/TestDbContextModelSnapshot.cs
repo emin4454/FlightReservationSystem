@@ -21,7 +21,7 @@ namespace FlightReservationSystem.Migrations
 
             NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
 
-            modelBuilder.Entity("FlightReservationSystem.Models.Human", b =>
+            modelBuilder.Entity("FlightReservationSystem.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -43,7 +43,7 @@ namespace FlightReservationSystem.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Humans");
+                    b.ToTable("Users");
                 });
 #pragma warning restore 612, 618
         }

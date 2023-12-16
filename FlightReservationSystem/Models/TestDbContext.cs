@@ -10,6 +10,6 @@ namespace FlightReservationSystem.Models
         {
             modelBuilder.UseSerialColumns();
         }
-        public DbSet<Human> Humans { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
