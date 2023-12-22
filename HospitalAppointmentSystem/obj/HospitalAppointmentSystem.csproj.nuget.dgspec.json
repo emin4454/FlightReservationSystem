@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\HospitalReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj": {}
+    "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\FlightReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj": {}
   },
   "projects": {
-    "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\HospitalReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj": {
+    "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\FlightReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\HospitalReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj",
+        "projectUniqueName": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\FlightReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj",
         "projectName": "HospitalAppointmentSystem",
-        "projectPath": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\HospitalReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj",
+        "projectPath": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\FlightReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem.csproj",
         "packagesPath": "C:\\Users\\azizc\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\HospitalReservationSystem\\HospitalAppointmentSystem\\HospitalAppointmentSystem\\obj\\",
+        "outputPath": "C:\\Users\\azizc\\OneDrive\\Belgeler\\GitHub\\FlightReservationSystem\\HospitalAppointmentSystem\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\azizc\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -59,6 +59,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.25, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.16, )"
             },
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",

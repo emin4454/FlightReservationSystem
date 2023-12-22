@@ -36,10 +36,10 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<TimeSpan>("appointmentTime")
                         .HasColumnType("interval");
 
-                    b.Property<int>("doctorId")
+                    b.Property<int?>("doctorId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("userId")
+                    b.Property<int?>("userId")
                         .HasColumnType("integer");
 
                     b.HasKey("appointmentId");
@@ -48,7 +48,7 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.HasIndex("userId");
 
-                    b.ToTable("appointments", (string)null);
+                    b.ToTable("appointments");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Branch", b =>
@@ -65,7 +65,7 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.HasKey("branchId");
 
-                    b.ToTable("branches", (string)null);
+                    b.ToTable("branches");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Doctor", b =>
@@ -76,14 +76,13 @@ namespace HospitalAppointmentSystem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("doctorId"));
 
-                    b.Property<int>("branchId")
+                    b.Property<int?>("branchId")
                         .HasColumnType("integer");
 
                     b.Property<string>("doctorName")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("policlinicId")
+                    b.Property<int?>("policlinicId")
                         .HasColumnType("integer");
 
                     b.Property<int>("worktimeLength")
@@ -98,7 +97,7 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.HasIndex("policlinicId");
 
-                    b.ToTable("doctors", (string)null);
+                    b.ToTable("doctors");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Policlinic", b =>
@@ -115,7 +114,7 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.HasKey("policlinicId");
 
-                    b.ToTable("policlinics", (string)null);
+                    b.ToTable("policlinics");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.User", b =>
@@ -126,39 +125,32 @@ namespace HospitalAppointmentSystem.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("userId"));
 
-                    b.Property<int>("isAdmin")
-                        .HasColumnType("integer");
+                    b.Property<string>("role")
+                        .HasColumnType("text");
 
                     b.Property<string>("userMail")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("userName")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("userPassword")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("userId");
 
-                    b.ToTable("users", (string)null);
+                    b.ToTable("users");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Appointment", b =>
                 {
                     b.HasOne("HospitalAppointmentSystem.Models.Doctor", "doctor")
                         .WithMany("appointments")
-                        .HasForeignKey("doctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("doctorId");
 
                     b.HasOne("HospitalAppointmentSystem.Models.User", "user")
                         .WithMany("appointments")
-                        .HasForeignKey("userId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("userId");
 
                     b.Navigation("doctor");
 
@@ -169,15 +161,11 @@ namespace HospitalAppointmentSystem.Migrations
                 {
                     b.HasOne("HospitalAppointmentSystem.Models.Branch", "branch")
                         .WithMany("doctors")
-                        .HasForeignKey("branchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("branchId");
 
                     b.HasOne("HospitalAppointmentSystem.Models.Policlinic", "policlinic")
                         .WithMany("doctors")
-                        .HasForeignKey("policlinicId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("policlinicId");
 
                     b.Navigation("branch");
 
