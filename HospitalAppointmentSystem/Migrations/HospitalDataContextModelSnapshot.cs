@@ -36,7 +36,7 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<TimeSpan>("appointmentTime")
                         .HasColumnType("time");
 
-                    b.Property<int?>("doctorId")
+                    b.Property<int>("doctorId")
                         .HasColumnType("int");
 
                     b.Property<string>("userId")
@@ -63,7 +63,12 @@ namespace HospitalAppointmentSystem.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("policlinicId")
+                        .HasColumnType("int");
+
                     b.HasKey("branchId");
+
+                    b.HasIndex("policlinicId");
 
                     b.ToTable("branches");
                 });
@@ -76,14 +81,12 @@ namespace HospitalAppointmentSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("doctorId"), 1L, 1);
 
-                    b.Property<int?>("branchId")
+                    b.Property<int>("branchId")
                         .HasColumnType("int");
 
                     b.Property<string>("doctorName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("policlinicId")
-                        .HasColumnType("int");
 
                     b.Property<int>("worktimeLength")
                         .HasColumnType("int");
@@ -94,8 +97,6 @@ namespace HospitalAppointmentSystem.Migrations
                     b.HasKey("doctorId");
 
                     b.HasIndex("branchId");
-
-                    b.HasIndex("policlinicId");
 
                     b.ToTable("doctors");
                 });
@@ -168,9 +169,6 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<string>("UserName")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
-
-                    b.Property<string>("role")
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("userFirstName")
                         .IsRequired()
@@ -273,12 +271,10 @@ namespace HospitalAppointmentSystem.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -315,12 +311,10 @@ namespace HospitalAppointmentSystem.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
@@ -334,7 +328,9 @@ namespace HospitalAppointmentSystem.Migrations
                 {
                     b.HasOne("HospitalAppointmentSystem.Models.Doctor", "doctor")
                         .WithMany("appointments")
-                        .HasForeignKey("doctorId");
+                        .HasForeignKey("doctorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("HospitalAppointmentSystem.Models.User", "user")
                         .WithMany("appointments")
@@ -345,19 +341,26 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("HospitalAppointmentSystem.Models.Branch", b =>
+                {
+                    b.HasOne("HospitalAppointmentSystem.Models.Policlinic", "policlinic")
+                        .WithMany("branches")
+                        .HasForeignKey("policlinicId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("policlinic");
+                });
+
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Doctor", b =>
                 {
                     b.HasOne("HospitalAppointmentSystem.Models.Branch", "branch")
                         .WithMany("doctors")
-                        .HasForeignKey("branchId");
-
-                    b.HasOne("HospitalAppointmentSystem.Models.Policlinic", "policlinic")
-                        .WithMany("doctors")
-                        .HasForeignKey("policlinicId");
+                        .HasForeignKey("branchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("branch");
-
-                    b.Navigation("policlinic");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -423,7 +426,7 @@ namespace HospitalAppointmentSystem.Migrations
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Policlinic", b =>
                 {
-                    b.Navigation("doctors");
+                    b.Navigation("branches");
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.User", b =>

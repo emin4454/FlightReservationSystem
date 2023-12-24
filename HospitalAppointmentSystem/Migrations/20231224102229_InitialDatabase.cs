@@ -30,7 +30,6 @@ namespace HospitalAppointmentSystem.Migrations
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     userFirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     userLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    role = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -49,19 +48,6 @@ namespace HospitalAppointmentSystem.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "branches",
-                columns: table => new
-                {
-                    branchId = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    branchName = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_branches", x => x.branchId);
                 });
 
             migrationBuilder.CreateTable(
@@ -123,8 +109,8 @@ namespace HospitalAppointmentSystem.Migrations
                 name: "AspNetUserLogins",
                 columns: table => new
                 {
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    ProviderKey = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    ProviderKey = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ProviderDisplayName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
@@ -168,8 +154,8 @@ namespace HospitalAppointmentSystem.Migrations
                 columns: table => new
                 {
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    LoginProvider = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(128)", maxLength: 128, nullable: false),
+                    LoginProvider = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Value = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -184,16 +170,35 @@ namespace HospitalAppointmentSystem.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "branches",
+                columns: table => new
+                {
+                    branchId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    branchName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    policlinicId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_branches", x => x.branchId);
+                    table.ForeignKey(
+                        name: "FK_branches_policlinics_policlinicId",
+                        column: x => x.policlinicId,
+                        principalTable: "policlinics",
+                        principalColumn: "policlinicId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "doctors",
                 columns: table => new
                 {
                     doctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    doctorName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    doctorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     worktimeStart = table.Column<TimeSpan>(type: "time", nullable: false),
                     worktimeLength = table.Column<int>(type: "int", nullable: false),
-                    branchId = table.Column<int>(type: "int", nullable: true),
-                    policlinicId = table.Column<int>(type: "int", nullable: true)
+                    branchId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -202,12 +207,8 @@ namespace HospitalAppointmentSystem.Migrations
                         name: "FK_doctors_branches_branchId",
                         column: x => x.branchId,
                         principalTable: "branches",
-                        principalColumn: "branchId");
-                    table.ForeignKey(
-                        name: "FK_doctors_policlinics_policlinicId",
-                        column: x => x.policlinicId,
-                        principalTable: "policlinics",
-                        principalColumn: "policlinicId");
+                        principalColumn: "branchId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -218,7 +219,7 @@ namespace HospitalAppointmentSystem.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     appointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     appointmentTime = table.Column<TimeSpan>(type: "time", nullable: false),
-                    doctorId = table.Column<int>(type: "int", nullable: true),
+                    doctorId = table.Column<int>(type: "int", nullable: false),
                     userId = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
@@ -233,7 +234,8 @@ namespace HospitalAppointmentSystem.Migrations
                         name: "FK_appointments_doctors_doctorId",
                         column: x => x.doctorId,
                         principalTable: "doctors",
-                        principalColumn: "doctorId");
+                        principalColumn: "doctorId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -286,14 +288,14 @@ namespace HospitalAppointmentSystem.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_branches_policlinicId",
+                table: "branches",
+                column: "policlinicId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_doctors_branchId",
                 table: "doctors",
                 column: "branchId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_doctors_policlinicId",
-                table: "doctors",
-                column: "policlinicId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
