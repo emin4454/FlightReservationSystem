@@ -6,8 +6,8 @@ namespace HospitalAppointmentSystem.Models
     {
         public int policlinicId { get; set; }
         [Required]
-        public string? policlinicName { get; set; }
+        public string policlinicName { get; set; }
         [Required]
-        public ICollection<Doctor>? doctors { get; set; }
+        public ICollection<Branch> branches { get; set; }
     }
 }

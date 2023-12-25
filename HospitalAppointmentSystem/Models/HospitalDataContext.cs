@@ -1,4 +1,5 @@
 ﻿using HospitalAppointmentSystem.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -8,16 +9,13 @@ using System.Threading.Tasks;
 
 namespace Hospital.Data
 {
-    public class HospitalDataContext : DbContext
+    public class HospitalDataContext : IdentityDbContext<User>
     {
         public HospitalDataContext(DbContextOptions<HospitalDataContext> options) :
             base(options)
         {
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.UseSerialColumns();
-        }
+
         public DbSet<Appointment> appointments { get; set; }
         public DbSet<User> users { get; set; }
         public DbSet<Doctor> doctors { get; set; }
