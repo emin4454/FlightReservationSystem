@@ -72,6 +72,7 @@ namespace HospitalAppointmentSystem.Migrations
                     b.HasIndex("policlinicId");
 
                     b.ToTable("branches");
+                    
                 });
 
             modelBuilder.Entity("HospitalAppointmentSystem.Models.Doctor", b =>
