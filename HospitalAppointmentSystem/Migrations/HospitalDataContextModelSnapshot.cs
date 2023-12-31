@@ -33,8 +33,8 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<DateTime>("appointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("appointmentTime")
-                        .HasColumnType("time");
+                    b.Property<int>("appointmentTime")
+                        .HasColumnType("int");
 
                     b.Property<int>("doctorId")
                         .HasColumnType("int");
@@ -135,6 +135,10 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ID")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
