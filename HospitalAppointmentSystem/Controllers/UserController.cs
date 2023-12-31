@@ -87,35 +87,35 @@ namespace HospitalAppointmentSystem.Controllers
                 return NotFound();
             }
 
-            // Kullanıcının mevcut rollerini alın
             var userRoles = await _userManager.GetRolesAsync(user);
 
-            // Seçilen rolleri alın
             var selectedRoles = new String[] { userView.role };
 
-            // Yeni rolleri bulun
 
             var newRoles = selectedRoles.Except(userRoles);
             if (newRoles != null) { 
-            // Eski rolleri bulun
                 var removedRoles = userRoles.Except(selectedRoles);
 
-            // Yeni rolleri kullanıcıya ata
                 await _userManager.AddToRolesAsync(user, newRoles);
 
-            // Eski rolleri kullanıcıdan kaldır
                 await _userManager.RemoveFromRolesAsync(user, removedRoles);
 
-            // Veritabanındaki değişiklikleri kaydet
                 await _userManager.UpdateAsync(user);
             }
             return RedirectToAction(nameof(Index));
         }
 
         // GET: UserController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<IActionResult> Delete(string id)
         {
-            return View();
+            var user = await _userManager.FindByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            var result = await _userManager.DeleteAsync(user);
+
+                return RedirectToAction(nameof(Index));
         }
 
         // POST: UserController/Delete/5
