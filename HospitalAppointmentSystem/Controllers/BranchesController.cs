@@ -55,7 +55,7 @@ namespace HospitalAppointmentSystem.Controllers
             {
                 Text = i.policlinicName,
                 Value = i.policlinicId.ToString(),
-        });
+            });
             return View();
         }
 

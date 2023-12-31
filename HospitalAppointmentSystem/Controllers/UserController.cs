@@ -4,6 +4,9 @@ using HospitalAppointmentSystem.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using System.Collections.Generic;
 using System.Data.Entity;
 
 namespace HospitalAppointmentSystem.Controllers
@@ -24,9 +27,7 @@ namespace HospitalAppointmentSystem.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var roless = _userManager.GetRolesAsync(_context.Users.FirstOrDefault(x=>x==x)).Result;
-
-            var filteredUsers = _context.Users.Select(x => new UserView
+            var filteredUsers = _context.Users.Select( x => new UserView
             {
                 userId = x.Id,
                 userEmail = x.Email,
@@ -49,24 +50,66 @@ namespace HospitalAppointmentSystem.Controllers
 
 
         // GET: UserController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<IActionResult> Edit(string id)
         {
-            return View();
+            if (id == null || _context.users == null)
+            {
+                return NotFound();
+            }
+            var user = _userManager.FindByIdAsync(id).Result;
+            var selectListItems = _context.Roles.Select(i => new SelectListItem
+            {
+                Text = i.Name,
+                Value = i.Name,
+            });
+            ViewBag.UserRoles = selectListItems;
+            var userView = new UserViewForEdit { 
+                userId = user.Id,
+                userLastName = user.userLastName,
+                userName = user.UserName,
+            };
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return View(userView);
         }
 
         // POST: UserController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(string id, [Bind("userName,userLastName,role,userId")] UserViewForEdit userView)
         {
-            try
+            var user = await _userManager.FindByIdAsync(userView.userId);
+
+            if (user == null)
             {
-                return RedirectToAction(nameof(Index));
+                return NotFound();
             }
-            catch
-            {
-                return View();
+
+            // Kullanıcının mevcut rollerini alın
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            // Seçilen rolleri alın
+            var selectedRoles = new String[] { userView.role };
+
+            // Yeni rolleri bulun
+
+            var newRoles = selectedRoles.Except(userRoles);
+            if (newRoles != null) { 
+            // Eski rolleri bulun
+                var removedRoles = userRoles.Except(selectedRoles);
+
+            // Yeni rolleri kullanıcıya ata
+                await _userManager.AddToRolesAsync(user, newRoles);
+
+            // Eski rolleri kullanıcıdan kaldır
+                await _userManager.RemoveFromRolesAsync(user, removedRoles);
+
+            // Veritabanındaki değişiklikleri kaydet
+                await _userManager.UpdateAsync(user);
             }
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: UserController/Delete/5
