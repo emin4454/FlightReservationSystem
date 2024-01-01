@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Hospital.Data;
 using HospitalAppointmentSystem.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HospitalAppointmentSystem.Controllers
 {
@@ -48,6 +49,18 @@ namespace HospitalAppointmentSystem.Controllers
         // GET: Appointments/Create
         public IActionResult Create()
         {
+            //ViewBag.DoctorList = new SelectList(_context.doctors, "DoctorId", "Name");
+            ViewBag.Doctors = _context.doctors.Select(i => new SelectListItem
+            {
+                Text = i.doctorName,
+                Value = i.doctorId.ToString(),
+            });
+            //ViewBag.UserList = new SelectList(_context.Users, "UserId", "Name");
+            ViewBag.Users = _context.Users.Select(i => new SelectListItem
+            {
+                Text = i.UserName,
+                Value = i.Id.ToString(),
+            });
             return View();
         }
 
@@ -56,11 +69,13 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime")] Appointment appointment, int doctorId, int userId)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                _context.Add(appointment);
+                appointment.doctor = await _context.doctors.FindAsync(doctorId);
+                appointment.user = await _context.Users.FindAsync(userId);
+                _context.appointments.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -155,6 +170,10 @@ namespace HospitalAppointmentSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> testView()
+        {
+            return View();
+        }
         private bool AppointmentExists(int id)
         {
           return (_context.appointments?.Any(e => e.appointmentId == id)).GetValueOrDefault();
