@@ -7,6 +7,6 @@ namespace HospitalAppointmentSystem.ViewModels
         public int doctorId { get; set; }
         public string userId { get; set; }
         public DateTime appointmentDate { get; set; } 
-        public int appointmentTime { get; set; } // 0--5
+        public string appointmentTime { get; set; } // 0--5
     }
 }

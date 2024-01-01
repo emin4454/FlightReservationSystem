@@ -10,16 +10,19 @@ using HospitalAppointmentSystem.Models;
 using HospitalAppointmentSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Identity;
 
 namespace HospitalAppointmentSystem.Controllers
 {
     public class AppointmentsController : Controller
     {
         private readonly HospitalDataContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public AppointmentsController(HospitalDataContext context)
+        public AppointmentsController(HospitalDataContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Appointments
@@ -51,18 +54,19 @@ namespace HospitalAppointmentSystem.Controllers
         // GET: Appointments/Create
         public IActionResult Create()
         {
-            //ViewBag.DoctorList = new SelectList(_context.doctors, "DoctorId", "Name");
             ViewBag.Doctors = _context.doctors.Select(i => new SelectListItem
             {
                 Text = i.doctorName,
                 Value = i.doctorId.ToString(),
             });
-            //ViewBag.UserList = new SelectList(_context.Users, "UserId", "Name");
-            ViewBag.Users = _context.Users.Select(i => new SelectListItem
+            ViewBag.TimeRanges = new List<SelectListItem>
             {
-                Text = i.UserName,
-                Value = i.Id,
-            });
+                new SelectListItem { Text = "9-10", Value = "9-10" },
+                new SelectListItem { Text = "10-11", Value = "10-11" },
+                new SelectListItem { Text = "11-12", Value = "11-12" },
+                new SelectListItem { Text = "12-13", Value = "12-13" },
+                new SelectListItem { Text = "13-14", Value = "13-14" }
+            };
             return View();
         }
 
@@ -71,12 +75,12 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime,userId,doctorId")] AppointmentView appointmentView)
+        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime,doctorId")] AppointmentView appointmentView)
         {
             if (ModelState.IsValid) 
             {
                 var doctorx = _context.doctors.FirstOrDefault(i=>appointmentView.doctorId == i.doctorId);
-                var userx = _context.Users.FirstOrDefault(i => appointmentView.userId == i.Id);
+                var userx = await _userManager.GetUserAsync(User);
                 var appointment = new Appointment
                 {
                     user = userx,
