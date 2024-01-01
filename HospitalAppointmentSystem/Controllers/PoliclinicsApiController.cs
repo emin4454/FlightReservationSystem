@@ -89,7 +89,7 @@ namespace HospitalAppointmentSystem.Controllers
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Policlinic>> PostPoliclinic([FromBody] Policlinic policlinicc)
-        {
+            {
                 
             var policlinic = new Policlinic { policlinicName =  "OROSPU" };
             _context.policlinics.Add(policlinic);
