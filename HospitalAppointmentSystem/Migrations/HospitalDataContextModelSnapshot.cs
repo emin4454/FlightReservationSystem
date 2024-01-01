@@ -82,10 +82,6 @@ namespace HospitalAppointmentSystem.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("doctorId"), 1L, 1);
 
-                    b.Property<string>("availableAppointmentTimes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("branchId")
                         .HasColumnType("int");
 
@@ -135,10 +131,6 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("ID")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");

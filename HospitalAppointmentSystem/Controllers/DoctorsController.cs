@@ -36,13 +36,13 @@ namespace HospitalAppointmentSystem.Controllers
                 return NotFound();
             }
 
-            var doctor = await _context.doctors
-                .FirstOrDefaultAsync(m => m.doctorId == id);
+            var filteredDoctors = _context.doctors.Include(i => i.branch);
+            var doctor = await filteredDoctors.FirstAsync(i => id == i.doctorId);
             if (doctor == null)
             {
                 return NotFound();
             }
-
+             
             return View(doctor);
         }
 
@@ -71,7 +71,6 @@ namespace HospitalAppointmentSystem.Controllers
                 {
                     doctorName = doctorView.doctorName,
                     branch = branchForDoctor,
-                    availableAppointmentTimes = "[0,1,2,3,4]"
                 };
                 _context.Add(doctor);
                 await _context.SaveChangesAsync();
@@ -86,14 +85,28 @@ namespace HospitalAppointmentSystem.Controllers
             if (id == null || _context.doctors == null)
             {
                 return NotFound();
-            }
 
-            var doctor = await _context.doctors.FindAsync(id);
+            }
+            var filteredDoctors = _context.doctors.Include(i => i.branch);
+            var doctor = await filteredDoctors.FirstAsync(i => id == i.doctorId);
+
             if (doctor == null)
             {
                 return NotFound();
             }
-            return View(doctor);
+            var doctorView = new DoctorView
+            {
+                doctorId = doctor.doctorId,
+                doctorName = doctor.doctorName,
+                branchId = doctor.branch.branchId
+            };
+            ViewBag.Branches = _context.branches.Select(i => new SelectListItem
+            {
+                Text = i.branchName,
+                Value = i.branchId.ToString(),
+                Selected = i.branchId == doctor.branch.branchId
+            });
+            return View(doctorView);
         }
 
         // POST: Doctors/Edit/5
@@ -101,8 +114,15 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("doctorId,doctorName,availableAppointmentTimes")] Doctor doctor)
+        public async Task<IActionResult> Edit(int id, [Bind("doctorId,doctorName,branchId")] DoctorView doctorView)
         {
+            Branch branchForDoctor = _context.branches.FirstOrDefault(i => i.branchId == doctorView.branchId);
+            var doctor = new Doctor
+            {
+                doctorId = id,
+                doctorName = doctorView.doctorName,
+                branch = branchForDoctor
+            };
             if (id != doctor.doctorId)
             {
                 return NotFound();

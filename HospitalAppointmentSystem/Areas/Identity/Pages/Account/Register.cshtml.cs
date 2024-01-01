@@ -154,7 +154,7 @@ namespace HospitalAppointmentSystem.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("Hesap oluşturuldu");
 
-                    await _userManager.AddToRoleAsync(user, Input.Role);
+                    await _userManager.AddToRoleAsync(user, "User");
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

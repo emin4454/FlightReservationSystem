@@ -87,15 +87,26 @@ namespace HospitalAppointmentSystem.Controllers
             {
                 return NotFound();
             }
-
             var filteredBranches = _context.branches.Include(i => i.policlinic);
             var branch = await filteredBranches.FirstAsync(i=>id ==i.branchId);
-            
             if (branch == null)
             {
                 return NotFound();
             }
-            return View(branch);
+            var branchView = new BranchView
+            {
+                branchId = branch.branchId,
+                branchName = branch.branchName,
+                policlinicId = branch.policlinic.policlinicId
+            };
+            ViewBag.Policlinics = _context.policlinics.Select(i => new SelectListItem
+            {
+                Text = i.policlinicName,
+                Value = i.policlinicId.ToString(),
+                Selected = i.policlinicId == branch.policlinic.policlinicId
+            }) ;
+
+            return View(branchView);
         }
 
         // POST: Branches/Edit/5
@@ -103,8 +114,15 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("branchId,branchName")] Branch branch)
+        public async Task<IActionResult> Edit(int id, [Bind("branchName,policlinicId,branchId")] BranchView branchView)
         {
+            Policlinic policlinicForBranch = _context.policlinics.FirstOrDefault(i => i.policlinicId == branchView.policlinicId);
+            var branch = new Branch
+            {
+                branchId = id,
+                branchName = branchView.branchName,
+                policlinic = policlinicForBranch
+            };
             if (id != branch.branchId)
             {
                 return NotFound();
@@ -130,7 +148,7 @@ namespace HospitalAppointmentSystem.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(branch);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Branches/Delete/5
