@@ -42,3 +42,14 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
 app.Run();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+        name: "default",
+        pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    // Add a route for your API controller
+    endpoints.MapControllerRoute(
+        name: "api",
+        pattern: "api/{controller=Api}/{action=Get}/{id?}");
+});

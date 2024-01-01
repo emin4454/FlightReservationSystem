@@ -5,169 +5,168 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = HospitalAppointmentSystem
 build_property.RootNamespace = HospitalAppointmentSystem
-build_property.ProjectDir = C:\Users\Emin\Documents\GitHub\FlightReservationSystem\HospitalAppointmentSystem\
+build_property.ProjectDir = C:\Users\azizc\OneDrive\Belgeler\GitHub\FlightReservationSystem\HospitalAppointmentSystem\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Emin\Documents\GitHub\FlightReservationSystem\HospitalAppointmentSystem
+build_property.MSBuildProjectDirectory = C:\Users\azizc\OneDrive\Belgeler\GitHub\FlightReservationSystem\HospitalAppointmentSystem
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Login.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Logout.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Register.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ViewImports.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ViewStart.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Create.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Delete.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERlbGV0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Details.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Edit.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Appointments/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXBwb2ludG1lbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Create.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Delete.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Details.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Edit.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Branches/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQnJhbmNoZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Create.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Delete.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Details.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Edit.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Doctors/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRG9jdG9yc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Home/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Home/Privacy.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Create.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWNsaW5pY3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Delete.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWNsaW5pY3NcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Details.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWNsaW5pY3NcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Edit.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWNsaW5pY3NcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Policlinics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUG9saWNsaW5pY3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Role/Create.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Role/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Role/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Role/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUm9sZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/Error.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_LoginPartial.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/User/Edit.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/User/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/User/Index.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/User/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/_ViewImports.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/_ViewStart.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Emin/Documents/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_Layout.cshtml]
+[C:/Users/azizc/OneDrive/Belgeler/GitHub/FlightReservationSystem/HospitalAppointmentSystem/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-wfioui8rna
