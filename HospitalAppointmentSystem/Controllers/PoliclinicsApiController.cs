@@ -88,16 +88,14 @@ namespace HospitalAppointmentSystem.Controllers
         // POST: api/PoliclinicsApi
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Policlinic>> PostPoliclinic([FromBody] Policlinic policlinic)
+        public async Task<ActionResult<Policlinic>> PostPoliclinic([FromBody] Policlinic policlinicc)
         {
-          if (_context.policlinics == null)
-          {
-              return Problem("Entity set 'HospitalDataContext.policlinics'  is null.");
-          }
+                
+            var policlinic = new Policlinic { policlinicName =  "OROSPU" };
             _context.policlinics.Add(policlinic);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPoliclinic", new { id = policlinic.policlinicId }, policlinic);
+            return Ok(policlinic);
         }
 
         // DELETE: api/PoliclinicsApi/5
