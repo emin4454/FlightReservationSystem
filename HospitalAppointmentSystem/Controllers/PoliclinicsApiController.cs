@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Hospital.Data;
 using HospitalAppointmentSystem.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HospitalAppointmentSystem.Controllers
 {
@@ -39,18 +40,18 @@ namespace HospitalAppointmentSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Policlinic>> GetPoliclinic(int id)
         {
-          if (_context.policlinics == null)
-          {
-              return NotFound();
-          }
+            if (_context.policlinics == null)
+            {
+                return NotFound();
+            }
             var policlinic = await _context.policlinics.FindAsync(id);
 
             if (policlinic == null)
             {
                 return NotFound();
             }
-
-            return policlinic;
+            var ret = new {policlinic.policlinicId,policlinic.policlinicName };
+            return Ok(ret);
         }
 
         // PUT: api/PoliclinicsApi/5
@@ -87,7 +88,7 @@ namespace HospitalAppointmentSystem.Controllers
         // POST: api/PoliclinicsApi
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Policlinic>> PostPoliclinic(Policlinic policlinic)
+        public async Task<ActionResult<Policlinic>> PostPoliclinic([FromBody] Policlinic policlinic)
         {
           if (_context.policlinics == null)
           {
