@@ -37,9 +37,8 @@ namespace HospitalAppointmentSystem.Controllers
             {
                 return NotFound();
             }
-
-            var branch = await _context.branches
-                .FirstOrDefaultAsync(m => m.branchId == id);
+            var filteredBranches = _context.branches.Include(i => i.policlinic);
+            var branch = await filteredBranches.FirstAsync(i => id == i.branchId);
             if (branch == null)
             {
                 return NotFound();
@@ -89,7 +88,9 @@ namespace HospitalAppointmentSystem.Controllers
                 return NotFound();
             }
 
-            var branch = await _context.branches.FindAsync(id);
+            var filteredBranches = _context.branches.Include(i => i.policlinic);
+            var branch = await filteredBranches.FirstAsync(i=>id ==i.branchId);
+            
             if (branch == null)
             {
                 return NotFound();
