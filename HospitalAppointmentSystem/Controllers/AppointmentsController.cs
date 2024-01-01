@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Hospital.Data;
 using HospitalAppointmentSystem.Models;
+using HospitalAppointmentSystem.ViewModels;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace HospitalAppointmentSystem.Controllers
 {
@@ -59,7 +61,7 @@ namespace HospitalAppointmentSystem.Controllers
             ViewBag.Users = _context.Users.Select(i => new SelectListItem
             {
                 Text = i.UserName,
-                Value = i.Id.ToString(),
+                Value = i.Id,
             });
             return View();
         }
@@ -69,17 +71,24 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime")] Appointment appointment, int doctorId, int userId)
+        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime,userId,doctorId")] AppointmentView appointmentView)
         {
             if (ModelState.IsValid) 
             {
-                appointment.doctor = await _context.doctors.FindAsync(doctorId);
-                appointment.user = await _context.Users.FindAsync(userId);
+                var doctorx = _context.doctors.FirstOrDefault(i=>appointmentView.doctorId == i.doctorId);
+                var userx = _context.Users.FirstOrDefault(i => appointmentView.userId == i.Id);
+                var appointment = new Appointment
+                {
+                    user = userx,
+                    doctor = doctorx,
+                    appointmentDate = appointmentView.appointmentDate,
+                    appointmentTime = appointmentView.appointmentTime,
+                };
                 _context.appointments.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(appointment);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Appointments/Edit/5
