@@ -7,16 +7,22 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Hospital.Data;
 using HospitalAppointmentSystem.Models;
+using HospitalAppointmentSystem.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.AspNetCore.Identity;
 
 namespace HospitalAppointmentSystem.Controllers
 {
     public class AppointmentsController : Controller
     {
         private readonly HospitalDataContext _context;
+        private readonly UserManager<User> _userManager;
 
-        public AppointmentsController(HospitalDataContext context)
+        public AppointmentsController(HospitalDataContext context, UserManager<User> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
         // GET: Appointments
@@ -48,6 +54,19 @@ namespace HospitalAppointmentSystem.Controllers
         // GET: Appointments/Create
         public IActionResult Create()
         {
+            ViewBag.Doctors = _context.doctors.Select(i => new SelectListItem
+            {
+                Text = i.doctorName,
+                Value = i.doctorId.ToString(),
+            });
+            ViewBag.TimeRanges = new List<SelectListItem>
+            {
+                new SelectListItem { Text = "9-10", Value = "9-10" },
+                new SelectListItem { Text = "10-11", Value = "10-11" },
+                new SelectListItem { Text = "11-12", Value = "11-12" },
+                new SelectListItem { Text = "12-13", Value = "12-13" },
+                new SelectListItem { Text = "13-14", Value = "13-14" }
+            };
             return View();
         }
 
@@ -56,15 +75,24 @@ namespace HospitalAppointmentSystem.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime")] Appointment appointment)
+        public async Task<IActionResult> Create([Bind("appointmentId,appointmentDate,appointmentTime,doctorId")] AppointmentView appointmentView)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid) 
             {
-                _context.Add(appointment);
+                var doctorx = _context.doctors.FirstOrDefault(i=>appointmentView.doctorId == i.doctorId);
+                var userx = await _userManager.GetUserAsync(User);
+                var appointment = new Appointment
+                {
+                    user = userx,
+                    doctor = doctorx,
+                    appointmentDate = appointmentView.appointmentDate,
+                    appointmentTime = appointmentView.appointmentTime,
+                };
+                _context.appointments.Add(appointment);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(appointment);
+            return RedirectToAction(nameof(Index));
         }
 
         // GET: Appointments/Edit/5
@@ -155,6 +183,10 @@ namespace HospitalAppointmentSystem.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> testView()
+        {
+            return View();
+        }
         private bool AppointmentExists(int id)
         {
           return (_context.appointments?.Any(e => e.appointmentId == id)).GetValueOrDefault();

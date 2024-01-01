@@ -6,9 +6,7 @@ namespace HospitalAppointmentSystem.Models
     {
         public int appointmentId { get; set; }
         public DateTime appointmentDate { get; set; }
-
-        public int appointmentTime { get; set; } // Burayi 0-5 arasi yapicaz bi guzelce dusunmek lazim
-
+        public string appointmentTime { get; set; } // Burayi 0-5 arasi yapicaz bi guzelce dusunmek lazim
         [Required]
         public Doctor doctor { get; set; }
         [Required]
