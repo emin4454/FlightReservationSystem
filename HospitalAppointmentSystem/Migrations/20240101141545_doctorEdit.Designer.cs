@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HospitalAppointmentSystem.Migrations
 {
     [DbContext(typeof(HospitalDataContext))]
-    [Migration("20231224102229_InitialDatabase")]
-    partial class InitialDatabase
+    [Migration("20240101141545_doctorEdit")]
+    partial class doctorEdit
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,13 +35,14 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<DateTime>("appointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("appointmentTime")
-                        .HasColumnType("time");
+                    b.Property<int>("appointmentTime")
+                        .HasColumnType("int");
 
                     b.Property<int>("doctorId")
                         .HasColumnType("int");
 
                     b.Property<string>("userId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("appointmentId");
@@ -89,12 +90,6 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<string>("doctorName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("worktimeLength")
-                        .HasColumnType("int");
-
-                    b.Property<TimeSpan>("worktimeStart")
-                        .HasColumnType("time");
 
                     b.HasKey("doctorId");
 
@@ -336,7 +331,9 @@ namespace HospitalAppointmentSystem.Migrations
 
                     b.HasOne("HospitalAppointmentSystem.Models.User", "user")
                         .WithMany("appointments")
-                        .HasForeignKey("userId");
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("doctor");
 

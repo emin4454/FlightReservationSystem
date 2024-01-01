@@ -33,8 +33,8 @@ namespace HospitalAppointmentSystem.Migrations
                     b.Property<DateTime>("appointmentDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<TimeSpan>("appointmentTime")
-                        .HasColumnType("time");
+                    b.Property<int>("appointmentTime")
+                        .HasColumnType("int");
 
                     b.Property<int>("doctorId")
                         .HasColumnType("int");
@@ -82,10 +82,6 @@ namespace HospitalAppointmentSystem.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("doctorId"), 1L, 1);
-
-                    b.Property<string>("availableAppointmentTimes")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("branchId")
                         .HasColumnType("int");

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HospitalAppointmentSystem.Migrations
 {
-    public partial class InitialDatabase : Migration
+    public partial class doctorEdit : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -196,8 +196,6 @@ namespace HospitalAppointmentSystem.Migrations
                     doctorId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     doctorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    worktimeStart = table.Column<TimeSpan>(type: "time", nullable: false),
-                    worktimeLength = table.Column<int>(type: "int", nullable: false),
                     branchId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -218,9 +216,9 @@ namespace HospitalAppointmentSystem.Migrations
                     appointmentId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     appointmentDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    appointmentTime = table.Column<TimeSpan>(type: "time", nullable: false),
+                    appointmentTime = table.Column<int>(type: "int", nullable: false),
                     doctorId = table.Column<int>(type: "int", nullable: false),
-                    userId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    userId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -229,7 +227,8 @@ namespace HospitalAppointmentSystem.Migrations
                         name: "FK_appointments_AspNetUsers_userId",
                         column: x => x.userId,
                         principalTable: "AspNetUsers",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_appointments_doctors_doctorId",
                         column: x => x.doctorId,

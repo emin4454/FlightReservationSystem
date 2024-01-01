@@ -14,6 +14,7 @@ builder.Services.AddDbContext<HospitalDataContext>(options =>
 builder.Services.AddIdentity<User, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = false)
     .AddDefaultTokenProviders()
     .AddDefaultUI()
+    .AddDefaultTokenProviders()
     .AddEntityFrameworkStores<HospitalDataContext>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
